@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    // box-sizing: border-box;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+.formContainer {
+    background: linear-gradient(45deg, blue, aqua);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .formWrapper {
+        padding: 20px 60px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #5d5b8d;
+        }
+
+        .title {
+            font-size: 20px;
+            color: #5d5b8d;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+
+            input {
+                font-size: 15px;
+                padding: 15px;
+                width: 250px;
+                border: none;
+                border-bottom: 1px solid #5d5b8d;
+                outline: none;
+
+                &::placeholder {
+                    color: rgb(170, 170, 170);
+                }
+            }
+
+            label{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: #5d5b8d;
+                cursor: pointer;
+
+                img {
+                    width: 32px;
+                }
+            }
+
+            button {
+                background-color: #7b96ec;
+                width: 100%;
+                color: white;
+                padding: 10px;
+                font-size: 16px;
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+            }
+
+            p {
+                color: #4b4a6a;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.home {
+    display: flex;
+    height: 100vh;
+    background-color: rgb(201, 201, 221);
+    align-items: center;
+    justify-content: center;
+
+    .container {
+        background-color: #5e5c8d;
+        display: flex;
+        width: 70%;
+        height: 80%;
+        border-radius: 10px;
+        overflow: hidden;
+
+        .sidebar {
+            flex: 1;
+            border-right: 1px solid #2937d3;
+            background-color: #2937d3;
+
+            .navbar {
+                display: flex;
+                height: 50px;
+                padding: 10px;
+                align-items: center;
+                justify-content: space-between;
+                color: black;
+                background-color: #dfe5e9;
+
+                .logo {
+                    font-weight: bold;
+                }
+
+                .user {
+                    display: flex;
+                    gap: 10px;
+
+                    img {
+                        height: 28px;
+                        width: 28px;
+                        background-color: aliceblue;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        cursor: pointer;
+                    }
+
+                    button {
+                        background-color: #2937d3;
+                        color: white;
+                        border-radius: 2px;
+                        border: none;
+                        padding: 4px;
+                        cursor: pointer;
+                        transition: padding 0.1s;
+
+                        &:hover {
+                            padding: 6px;
+                        }
+                        &:active {
+                            padding: 4px;
+                        }
+
+                    }
+                }
+            }
+
+            .search {
+
+                .searchForm {
+                    padding: 10px;
+
+                    input {
+                        background-color: transparent;
+                        color: white;
+                        border: none;
+                        border-bottom: 1px solid rgb(123, 122, 122);
+                        outline: none;
+                        border-bottom: 1px solid rgb(123, 122, 122);
+                        height: 30px;
+                        width: 95%;
+                        padding: 5px;
+                        transition: height 0.15s, font-size 0.15s;
+
+                        &::placeholder {
+                            color: white;
+                        }
+
+                        &:hover {
+                            height: 40px;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
+            .userChat {
+                display: flex;
+                padding: 10px;
+                align-items: center;
+                gap: 10px;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.15s, margin 0.15s, box-shadow 0.15s;
+
+                &:hover {
+                    background-color: #0f1a8d;
+                    margin: 5px 5px;
+                    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+                }
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+
+                .userChatInfo {
+                    span {
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                    p {
+                        font-size: 14px;
+                        color: lightgray;
+                    }
+                }
+            }
+        }
+
+        .chat {
+            flex: 2;
+        }
+    }
+}
+
