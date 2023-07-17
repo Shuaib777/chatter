@@ -1,12 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,700&display=swap');
 
+// to use it use @include mobile
+@mixin mobile {
+    @media screen and (max-width: 400px) {
+        @content;
+    }
+}
+
+
 * {
     padding: 0;
     margin: 0;
-    // box-sizing: border-box;
-    // overflow-y: hidden;
-    // overflow-x: hidden;
+    // overflow: hidden;
     font-family: 'Poppins', sans-serif;
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
 }
 
 .formContainer {
@@ -71,14 +81,27 @@
             }
 
             button {
-                background-color: #7b96ec;
-                width: 100%;
+                background-color: #3d5cc5;
+                width: 90%;
                 color: white;
                 padding: 10px;
                 font-size: 16px;
                 font-weight: bold;
                 border: none;
                 cursor: pointer;
+                transition: width 0.15s, padding 0.15s, box-shadow 0.15s;
+
+                &:hover {
+                    width: 100%;
+                    padding: 15px;
+                    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6);
+                }
+
+                &:active {
+                    width: 90%;
+                    padding: 10px;
+                    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+                }
             }
 
             p {
@@ -102,6 +125,9 @@
         height: 80%;
         border-radius: 10px;
         overflow: hidden;
+        @include mobile {
+            width: 90%;
+        }
 
         .sidebar {
             flex: 1;
@@ -249,10 +275,7 @@
                 background-position: center;
                 padding: 10px;
                 height: calc(100% - 160px);
-                overflow-x: hidden;
-                overflow-y: scroll;
-                scroll-behavior: smooth;
-
+                overflow: scroll;
 
                 .message {
                     display: flex;
@@ -296,6 +319,7 @@
                         }
                     }
 
+                    // when the message is from owner
                     &.owner {
                         flex-direction: row-reverse;
 
