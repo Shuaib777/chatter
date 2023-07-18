@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import tick from "../image/tickmark.webp";
 import Add from "../image/addAvatar.png";
 import { auth, storage, database, refdb } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -9,6 +10,10 @@ import { update } from "firebase/database";
 const Register = () => {
   const [err, setErr] = useState(false);
   const [avatar, setAvatar] = useState(false);
+
+  const handlechange = () => {
+    setAvatar(true);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +53,8 @@ const Register = () => {
               photoURL: downloadURL,
             });
 
+            await update(refdb(database, 'userchats' + res.user.uid), {})
+
           //   this is for firestore
           //   await setDoc(doc(db, "users", res.user.uid), {
           //     uid: res.user.uid,
@@ -78,10 +85,10 @@ const Register = () => {
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <input style={{ display: "none" }} type="file" id="file" />
+          <input style={{ display: "none" }} type="file" id="file" onChange={handlechange} />
           <label htmlFor="file">
-            <img src={Add} alt="" />
-            <span>{avatar?'✅':'Add an avatar'}</span>
+            {avatar || <img src={Add} alt="" />}
+            <span>{ avatar ? <img style={{width: "40px"}} src={tick} alt=""></img> : 'Add an avatar' }</span>
           </label>
           <button>Sign up</button>
           {err && <span style={{ color: "red" }}>{err}!!</span>}
