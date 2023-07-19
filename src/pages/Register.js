@@ -1,26 +1,32 @@
 import React, { useState } from "react";
-import tick from "../image/tickmark.webp";
+import tick from "../image/tickmark.png";
 import Add from "../image/addAvatar.png";
 import { auth, storage, database, refdb } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { update } from "firebase/database";
+import { Link, useNavigate } from "react-router-dom";
 // import { setDoc, doc } from "firebase/firestore";
 
 const Register = () => {
   const [err, setErr] = useState(false);
   const [avatar, setAvatar] = useState(false);
+  const navigate = useNavigate();
 
   const handlechange = () => {
     setAvatar(true);
   }
+
+  //The keyword async before a function makes the function return a promise.
+  //The await keyword makes the function pause the execution and wait for a resolved promise before it continues.
+  //here updateProfile, update, etc returns a promises.
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
-    const file = e.target[3].value[0];
+    const file = e.target[3].files[0];
 
     if (displayName === "") {
       setErr(() => "Name field cannot be empty");
@@ -30,15 +36,11 @@ const Register = () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
-      const storageRef = ref(storage, displayName);
-
-      const uploadTask = uploadBytesResumable(storageRef, file);
+      const storageRef = ref(storage, email);
 
       await uploadBytesResumable(storageRef, file).then(() => {
-        getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+        getDownloadURL(storageRef).then(async (downloadURL) => {
           try {
-            console.log(downloadURL);
-            console.log(res.user);
             setAvatar(true);
 
             await updateProfile(res.user, {
@@ -53,7 +55,8 @@ const Register = () => {
               photoURL: downloadURL,
             });
 
-            await update(refdb(database, 'userchats' + res.user.uid), {})
+            await update(refdb(database, 'userchats/' + res.user.uid), {});
+            navigate('/');
 
           //   this is for firestore
           //   await setDoc(doc(db, "users", res.user.uid), {
@@ -92,7 +95,7 @@ const Register = () => {
           </label>
           <button>Sign up</button>
           {err && <span style={{ color: "red" }}>{err}!!</span>}
-          <p>Already a member? Login</p>
+          <p>Already a member?<Link to="/login">Login</Link></p>
         </form>
       </div>
     </div>
