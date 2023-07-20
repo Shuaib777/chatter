@@ -15,7 +15,7 @@
     font-family: 'Poppins', sans-serif;
 
     ::-webkit-scrollbar {
-        width: 5px;
+        width: 2px;
     }
 }
 
@@ -124,7 +124,6 @@
         width: 70%;
         height: 80%;
         border-radius: 10px;
-        overflow: hidden;
         @include mobile {
             width: 90%;
         }
@@ -133,6 +132,10 @@
             flex: 1;
             border-right: 1px solid #2937d3;
             background-color: #2937d3;
+            overflow-y: scroll;
+            //to make this a parent container
+            -webkit-transform: translateZ(0);
+            position: relative;
 
             .navbar {
                 display: flex;
@@ -209,6 +212,11 @@
                 }
             }
 
+            .chats {
+                height: calc(100% - 250px);
+                overflow-y: scroll;
+            }
+
             .userChat {
                 display: flex;
                 padding: 10px;
@@ -239,6 +247,41 @@
                         font-size: 14px;
                         color: lightgray;
                     }
+                }
+            }
+
+            .userID {
+                position: fixed;
+                bottom: 10px;
+                padding-left: 10px;
+
+                button {
+                    border: 1px solid white;
+                    padding: 1px;
+                    border-radius: 2px;
+                    color: white;
+                    background-color: #2937d3;
+                    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.6);
+                }
+
+                button:hover {
+                    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+                }
+
+                .userIDContent {
+                    font-size: 12px;
+                    color: white;
+                    
+                    span {
+                        border-top: 1px solid rgb(166, 165, 165);
+                        border-left: 1px solid rgb(166, 165, 165);
+                        background-color: #2937d3;
+                        padding: 5px;
+                        box-Shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+                        color: rgb(191, 188, 188);
+                        margin-left: 7px;
+                    }
+                    
                 }
             }
         }
