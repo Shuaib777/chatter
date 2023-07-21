@@ -30,8 +30,8 @@ const Search = () => {
   }
 
   const handleClick = async () => {
-    //check whether the previous conversation exists, if not then create it
     const combinedID = user.uid > currentUser.uid? user.uid + currentUser.uid : currentUser.uid + user.uid;
+
     try {
       onValue(refdb(database, 'chats/'+ combinedID), (snapshot) => {
         console.log(snapshot.val().message);
@@ -39,7 +39,7 @@ const Search = () => {
 
         //if previous conversation does not exists(i.e. path does not exist) then create this path
         await update(refdb(database, 'chats/'+combinedID), {
-          message: `its working`
+          message: ['Start conversation']
         })
 
       })
@@ -50,13 +50,37 @@ const Search = () => {
         message: ['Start conversation']
       })
 
+      let today = new Date();
+      let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      let dateTime = date+' '+time;
+
+      await update(refdb(database, `userChats/${currentUser.uid}/`+combinedID), {
+        userinfo: {
+          uid: user.uid,
+          displayname: user.displayName,
+          photoURL: user.photoURL
+        },
+        date : dateTime
+      })
+      await update(refdb(database, `userChats/${user.uid}/`+combinedID), {
+        userinfo: {
+          uid: currentUser.uid,
+          displayname: currentUser.displayName,
+          photoURL: currentUser.photoURL
+        },
+        date : dateTime
+      })
+
     }
+    setUser(null);
+    setUsername("");
   }
 
   return (
     <div className="search">
       <div className="searchForm">
-        <input type="text" placeholder='Find a user with userID' onKeyDown={handleKey} onChange={e => setUsername(e.target.value)}/>
+        <input type="text" placeholder='Find a user with userID' value={username} onKeyDown={handleKey} onChange={e => setUsername(e.target.value)}/>
       </div>
       {err && <span style={{color: "red", marginLeft: "10px"}}>User not found!!</span>}
       {user &&
