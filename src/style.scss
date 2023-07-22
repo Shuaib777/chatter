@@ -2,7 +2,7 @@
 
 // to use it use @include mobile
 @mixin mobile {
-  @media only screen and (min-width: 600px) {
+  @media only screen and (max-width: 1000px) {
     @content;
   }
 }
@@ -200,11 +200,17 @@
 
         .logo {
           font-weight: bold;
+          @include mobile {
+            display: none;
+          }
         }
 
         .user {
           display: flex;
           gap: 10px;
+          @include mobile {
+            font-size: 25px;
+          }
 
           img {
             height: 28px;
@@ -213,6 +219,10 @@
             border-radius: 50%;
             object-fit: cover;
             cursor: pointer;
+            @include mobile {
+              height: 40px;
+              width: 40px;
+            }
           }
 
           button {
@@ -223,6 +233,9 @@
             padding: 4px;
             cursor: pointer;
             transition: padding 0.1s;
+            @include mobile {
+              margin-left: 100px;
+            }
 
             &:hover {
               padding: 6px;
@@ -249,6 +262,10 @@
             width: 95%;
             padding: 5px;
             transition: height 0.15s, font-size 0.15s;
+            @include mobile {
+              height: 50px;
+              font-size: 20px;
+            }
 
             &::placeholder {
               color: white;
@@ -275,6 +292,9 @@
         color: white;
         cursor: pointer;
         transition: background-color 0.15s, margin 0.15s, box-shadow 0.15s;
+        @include mobile {
+          padding: 15px 10px 15px 10px;
+        }
 
         &:hover {
           background-color: #0f1a8d;
@@ -286,16 +306,27 @@
           width: 40px;
           height: 40px;
           border-radius: 50%;
+          @include mobile {
+            width: 60px;
+            height: 60px;
+          }
         }
 
         .userChatInfo {
           span {
             font-size: 18px;
             font-weight: bold;
+            @include mobile {
+              font-size: 25px;
+              font-weight: 500;
+            }
           }
           p {
             font-size: 14px;
             color: lightgray;
+            @include mobile {
+              font-size: 18px;
+            }
           }
         }
       }
@@ -304,6 +335,9 @@
         position: fixed;
         bottom: 10px;
         padding-left: 10px;
+        @include mobile {
+          bottom: 15px;
+        }
 
         button {
           border: 1px solid white;
@@ -312,6 +346,9 @@
           color: white;
           background-color: #2937d3;
           box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.6);
+          @include mobile {
+            font-size: 15px;
+          }
         }
 
         button:hover {
@@ -321,6 +358,9 @@
         .userIDContent {
           font-size: 12px;
           color: white;
+          @include mobile {
+            font-size: 12px;
+          }
 
           span {
             border-top: 1px solid rgb(166, 165, 165);
@@ -330,6 +370,9 @@
             box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
             color: rgb(191, 188, 188);
             margin-left: 7px;
+            @include mobile {
+              font-size: 14px;
+            }
           }
         }
       }
@@ -346,6 +389,9 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px;
+        @include mobile {
+          font-size: 25px;
+        }
 
         .chatIcons {
           display: flex;
@@ -356,75 +402,95 @@
             height: 30px;
             width: 30px;
             cursor: pointer;
+            @include mobile {
+              height: 40px;
+              width: 40px;
+            }
           }
         }
       }
 
-      .messages {
+      .backgroundImage {
         background-image: url("./image/background.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        padding: 10px;
-        height: calc(100% - 160px);
-        overflow: scroll;
+        height: calc(100% - 140px);
+        @include mobile {
+          height: calc(100% - 160px);
+        }
 
-        .message {
-          display: flex;
-          gap: 20px;
-          margin-top: 20px;
-          margin-bottom: 20px;
-
-          .messageInfo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: gray;
-            font-weight: 300;
-
-            img {
-              height: 40px;
-              width: 40px;
-              border-radius: 50%;
-              object-fit: cover;
-            }
+        .messages {
+          height: 100%;
+          width: 100%;
+          background: transparent;
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          overflow-y: scroll;
+          @include mobile {
+            font-size: 30px;
           }
 
-          .messageContent {
-            max-width: 80%;
+          .message {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 20px;
+            margin: 20px;
 
-            p {
-              background-color: #426ece;
-              color: white;
-              padding: 10px;
-              border-radius: 0px 10px 10px 10px;
-              max-width: max-content;
+            .messageInfo {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              color: gray;
+              font-weight: 300;
+
+              img {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                @include mobile {
+                  height: 80px;
+                  width: 80px;
+                }
+              }
             }
-
-            img {
-              width: 30%;
-              border-radius: 0px 10px 10px 10px;
-            }
-          }
-
-          // when the message is from owner
-          &.owner {
-            flex-direction: row-reverse;
 
             .messageContent {
-              align-items: flex-end;
+              max-width: 80%;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              margin-top: 10px;
 
               p {
-                background-color: hwb(45 43% 13%);
-                border-radius: 10px 0px 10px 10px;
+                background-color: #426ece;
+                color: white;
+                padding: 10px;
+                border-radius: 0px 10px 10px 10px;
+                max-width: max-content;
               }
 
               img {
-                border-radius: 10px 0px 10px 10px;
+                width: 30%;
+                border-radius: 0px 10px 10px 10px;
+              }
+            }
+
+            // when the message is from owner
+            &.owner {
+              flex-direction: row-reverse;
+
+              .messageContent {
+                align-items: flex-end;
+
+                p {
+                  background-color: hwb(45 43% 13%);
+                  border-radius: 10px 0px 10px 10px;
+                }
+
+                img {
+                  border-radius: 10px 0px 10px 10px;
+                }
               }
             }
           }
@@ -438,6 +504,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        @include mobile {
+          height: 70px;
+        }
 
         input {
           width: 100%;
@@ -445,6 +514,9 @@
           outline: none;
           background-color: transparent;
           font-size: 16px;
+          @include mobile {
+            font-size: 25px;
+          }
         }
 
         .send {
@@ -460,6 +532,10 @@
             width: 24px;
             height: 24px;
             cursor: pointer;
+            @include mobile {
+              width: 30px;
+              height: 30px;
+            }
           }
 
           button {
