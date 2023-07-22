@@ -55,7 +55,7 @@ const Register = () => {
               photoURL: downloadURL,
             });
 
-            await update(refdb(database, 'userchats/' + res.user.uid), {});
+            await update(refdb(database, 'userChats/'), { [res.user.uid] : 'start conversation'});
             navigate('/');
 
           //   this is for firestore

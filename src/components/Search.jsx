@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import {database, refdb} from "../firebase";
-import { onValue, update } from "firebase/database";
+import { onValue, serverTimestamp, update } from "firebase/database";
 import { AuthContext } from "../context/authContext";
 
 const Search = () => {
@@ -50,10 +50,10 @@ const Search = () => {
         message: ['Start conversation']
       })
 
-      let today = new Date();
-      let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-      let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-      let dateTime = date+' '+time;
+      // let today = new Date();
+      // let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      // let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      // let dateTime = date+' '+time;
 
       await update(refdb(database, `userChats/${currentUser.uid}/`+combinedID), {
         userinfo: {
@@ -61,7 +61,8 @@ const Search = () => {
           displayname: user.displayName,
           photoURL: user.photoURL
         },
-        date : dateTime
+        date : serverTimestamp(),
+        lastMessage: {text: 'start conversation'}
       })
       await update(refdb(database, `userChats/${user.uid}/`+combinedID), {
         userinfo: {
@@ -69,7 +70,7 @@ const Search = () => {
           displayname: currentUser.displayName,
           photoURL: currentUser.photoURL
         },
-        date : dateTime
+        date : serverTimestamp()
       })
 
     }
