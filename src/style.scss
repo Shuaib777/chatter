@@ -169,6 +169,50 @@
   background-color: rgb(201, 201, 221);
   align-items: center;
   justify-content: center;
+  z-index: 1;
+
+  .wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .popupImage {
+      border-radius: 2px;
+      width: 500px;
+      height: 500px;
+    }
+
+    button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      font-size: 25px;
+    }
+
+    label {
+      img {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+    }
+  }
 
   .container {
     display: flex;
@@ -185,7 +229,6 @@
       border-right: 1px solid #2937d3;
       background-color: #2937d3;
       overflow-y: scroll;
-      //to make this a parent container
       -webkit-transform: translateZ(0);
       position: relative;
 
