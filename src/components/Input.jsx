@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import attach from "../image/attach.png";
+import image from "../image/img.png";
 import { AuthContext } from "../context/authContext";
 import { ChatContext } from "../context/chatContext";
 import { onValue, serverTimestamp, update } from "firebase/database";
@@ -88,7 +89,7 @@ const Input = () => {
           onChange={(e) => setImg(e.target.files[0])}
         />
         <label htmlFor="file">
-          <img src={img} alt="" />
+          <img src={image} alt="" />
         </label>
         <button onClick={handleSend}>send</button>
       </div>
