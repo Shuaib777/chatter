@@ -1,21 +1,18 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../context/authContext";
 import { ChatContext } from "../context/chatContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
   const image = message.img;
-  const navigate = useNavigate();
 
   const refVar = useRef();
 
   useEffect(() => {
     refVar.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
-
-  const handleClick = () => {};
 
   return (
     <div
