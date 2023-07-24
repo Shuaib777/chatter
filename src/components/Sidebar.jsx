@@ -4,10 +4,10 @@ import Search from "./Search";
 import Chats from "./Chats";
 import UserID from "./UserID";
 
-const Sidebar = () => {
+const Sidebar = ({ handleCloseSidebar }) => {
   return (
     <div className="sidebar">
-      <Navbar></Navbar>
+      <Navbar handleCloseSidebar={handleCloseSidebar}></Navbar>
       <Search></Search>
       <Chats></Chats>
       <UserID></UserID>

@@ -8,12 +8,14 @@ import { ChatContext } from "../context/chatContext";
 import { AuthContext } from "../context/authContext";
 import { onValue } from "firebase/database";
 import { database, refdb } from "../firebase";
+import { useNavigate } from "react-router";
 
 const Chat = () => {
   //this data will comtain two things: chatid(combined id) and user(which i gave through payload)
   const { data } = useContext(ChatContext);
   const { currentUser } = useContext(AuthContext);
   const [chatted, setchatted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getChats = () => {
@@ -36,7 +38,16 @@ const Chat = () => {
       {chatted ? (
         <>
           <div className="chatInfo">
-            <span>{data.user?.displayname}</span>
+            {data.user && (
+              <div className="userProfile">
+                <img
+                  src={data.user.photoURL}
+                  onClick={() => navigate("/image")}
+                  alt=""
+                />
+                <span>{data.user.displayname}</span>
+              </div>
+            )}
             <div className="chatIcons">
               <img src={Cam} alt="" />
               <img src={Add} alt="" />

@@ -4,13 +4,19 @@ import { auth } from "../firebase";
 import { AuthContext } from "../context/authContext";
 import { PopupContext } from "../context/popupContext";
 
-const Navbar = () => {
+const Navbar = ({ handleCloseSidebar }) => {
   const { dispatch } = useContext(PopupContext);
+  const screenWidth = window.screen.width;
 
   const { currentUser } = useContext(AuthContext);
   const handleOpen = () => dispatch({ type: "CHANGE_STATE", payload: true });
   return (
     <div className="navbar">
+      {screenWidth <= 1200 && (
+        <span className="hamburger" onClick={handleCloseSidebar}>
+          ☰
+        </span>
+      )}
       <div className="logo">Chatter</div>
       <div className="user">
         <img src={currentUser.photoURL} alt="" onClick={() => handleOpen()} />

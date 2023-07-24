@@ -56,7 +56,7 @@ const Input = () => {
           `userChats/${currentUser.uid}/${data.chatID}/lastMessage`
         ),
         {
-          text: text,
+          text: text.substring(0, 10) + "...",
         }
       );
 
