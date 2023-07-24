@@ -29,7 +29,7 @@ const Chat = () => {
       };
     };
     currentUser.uid && getChats();
-  }, [data.chatId]);
+  }, [currentUser.uid]);
 
   return (
     <div className="chat">

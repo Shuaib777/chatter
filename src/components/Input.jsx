@@ -36,7 +36,6 @@ const Input = () => {
                 img: downloadURL,
               },
             });
-            setLen(len + 1);
           });
         });
       } else {
@@ -48,7 +47,6 @@ const Input = () => {
             date: serverTimestamp(),
           },
         });
-        setLen(len + 1);
       }
 
       await update(
