@@ -63,7 +63,7 @@ const Input = () => {
       await update(
         refdb(database, `userChats/${currentUser.uid}/${data.chatID}`),
         {
-          ["/date"]: serverTimestamp(),
+          date: serverTimestamp(),
         }
       );
 

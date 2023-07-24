@@ -12,6 +12,7 @@ export const PopupContextProvider = ({ children }) => {
       case "CHANGE_STATE":
         return {
           isOpen: action.payload,
+          id: action.id,
         };
       default:
         return state;

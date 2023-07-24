@@ -8,14 +8,14 @@ import { ChatContext } from "../context/chatContext";
 import { AuthContext } from "../context/authContext";
 import { onValue } from "firebase/database";
 import { database, refdb } from "../firebase";
-import { useNavigate } from "react-router";
+import { PopupContext } from "../context/popupContext";
 
 const Chat = () => {
   //this data will comtain two things: chatid(combined id) and user(which i gave through payload)
   const { data } = useContext(ChatContext);
   const { currentUser } = useContext(AuthContext);
   const [chatted, setchatted] = useState(false);
-  const navigate = useNavigate();
+  const { dispatch } = useContext(PopupContext);
 
   useEffect(() => {
     const getChats = () => {
@@ -33,6 +33,9 @@ const Chat = () => {
     currentUser.uid && getChats();
   }, [currentUser.uid]);
 
+  const handleClick = () =>
+    dispatch({ type: "CHANGE_STATE", payload: true, id: "anotherUser" });
+
   return (
     <div className="chat">
       {chatted ? (
@@ -42,7 +45,7 @@ const Chat = () => {
               <div className="userProfile">
                 <img
                   src={data.user.photoURL}
-                  onClick={() => navigate("/image")}
+                  onClick={() => handleClick()}
                   alt=""
                 />
                 <span>{data.user.displayname}</span>

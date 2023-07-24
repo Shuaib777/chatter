@@ -9,7 +9,8 @@ const Navbar = ({ handleCloseSidebar }) => {
   const screenWidth = window.screen.width;
 
   const { currentUser } = useContext(AuthContext);
-  const handleOpen = () => dispatch({ type: "CHANGE_STATE", payload: true });
+  const handleOpen = () =>
+    dispatch({ type: "CHANGE_STATE", payload: true, id: "currentUser" });
   return (
     <div className="navbar">
       {screenWidth <= 1200 && (
