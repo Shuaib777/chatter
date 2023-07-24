@@ -36,6 +36,7 @@ const Input = () => {
                 img: downloadURL,
               },
             });
+            console.log("image uploaded");
           });
         });
       } else {
