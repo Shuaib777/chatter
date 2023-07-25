@@ -19,19 +19,21 @@ const Message = ({ message }) => {
       ref={refVar}
       className={`message ${message.senderID === currentUser.uid && "owner"}`}
     >
-      <div className="messageInfo">
-        <img
-          src={
-            message.senderID === currentUser.uid
-              ? currentUser.photoURL
-              : data.user.photoURL
-          }
-          alt=""
-        />
-        <span>just now</span>
-      </div>
+      {(message.text || message.img) && (
+        <div className="messageInfo">
+          <img
+            src={
+              message.senderID === currentUser.uid
+                ? currentUser.photoURL
+                : data.user.photoURL
+            }
+            alt=""
+          />
+          <span>just now</span>
+        </div>
+      )}
       <div className="messageContent">
-        <p>{message.text}</p>
+        {message.text && <p>{message.text}</p>}
         {message.img && (
           <>
             <img src={image} alt="" />

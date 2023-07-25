@@ -496,21 +496,24 @@
         padding: 10px;
 
         .userProfile {
-          margin-left: 100px;
-          font-size: 30px;
+          margin-left: 10px;
+          font-size: 25px;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 10px;
+          @include mobile {
+            margin-left: 50px;
+          }
           img {
-            height: 50px;
-            width: 50px;
+            height: 35px;
+            width: 35px;
             border-radius: 50%;
             object-fit: cover;
             cursor: pointer;
             @include mobile {
-              height: 50px;
-              width: 50px;
+              height: 40px;
+              width: 40px;
             }
           }
         }

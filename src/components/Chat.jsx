@@ -43,11 +43,14 @@ const Chat = () => {
           <div className="chatInfo">
             {data.user && (
               <div className="userProfile">
-                <img
-                  src={data.user.photoURL}
-                  onClick={() => handleClick()}
-                  alt=""
-                />
+                {data.user.photoURL && (
+                  <img
+                    src={data.user.photoURL}
+                    onClick={() => handleClick()}
+                    alt=""
+                  />
+                )}
+
                 <span>{data.user.displayname}</span>
               </div>
             )}

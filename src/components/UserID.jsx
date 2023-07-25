@@ -6,12 +6,16 @@ const UserID = () => {
   const [userId, setUserId] = useState(false);
   const handleClick = () => {
     setUserId(true);
-  }
+  };
 
   return (
     <div className="userID">
-        {userId || <button onClick={handleClick}>UserID</button>}
-        {userId && <div className="userIDContent">UserID: <span>{currentUser.uid}</span></div >}
+      {userId || <button onClick={handleClick}>UserID</button>}
+      {userId && (
+        <div className="userIDContent">
+          UserID: <span>{currentUser.uid.slice(-7)}</span>
+        </div>
+      )}
     </div>
   );
 };

@@ -6,12 +6,14 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { update } from "firebase/database";
 import { Link, useNavigate } from "react-router-dom";
+import { Backdrop, CircularProgress } from "@mui/material";
 // import { setDoc, doc } from "firebase/firestore";
 
 const Register = () => {
   const [err, setErr] = useState(false);
   const [avatar, setAvatar] = useState(false);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handlechange = () => {
     setAvatar(true);
@@ -32,9 +34,9 @@ const Register = () => {
       setErr(() => "Name field cannot be empty");
       return;
     }
-
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
+      setLoading(true);
 
       // await sendEmailVerification(auth.currentUser).then(() => {
       //   alert("Email verification Link send to your email address");
@@ -46,6 +48,7 @@ const Register = () => {
         getDownloadURL(storageRef).then(async (downloadURL) => {
           try {
             setAvatar(true);
+            setLoading(false);
 
             await updateProfile(res.user, {
               displayName,
@@ -91,6 +94,15 @@ const Register = () => {
 
   return (
     <div className="formContainer">
+      {loading && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open
+        >
+          <CircularProgress color="inherit" />
+          <p style={{ marginLeft: "10px" }}>Uploading image</p>
+        </Backdrop>
+      )}
       <div className="formWrapper">
         <span className="logo">Chatter</span>
         <span className="title">Register</span>
