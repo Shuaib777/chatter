@@ -7,9 +7,6 @@ import {
   orderByChild,
   query,
   equalTo,
-  get,
-  child,
-  orderByValue,
 } from "firebase/database";
 import { AuthContext } from "../context/authContext";
 

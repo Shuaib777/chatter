@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import tick from "../image/tickmark.png";
+import userImage from "../image/userImage.jpg";
 import Add from "../image/addAvatar.png";
 import { auth, storage, database, refdb } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -14,9 +15,11 @@ const Register = () => {
   const [avatar, setAvatar] = useState(false);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [filestatus, setFileStatus] = useState(false);
 
   const handlechange = () => {
     setAvatar(true);
+    setFileStatus(true);
   };
 
   //The keyword async before a function makes the function return a promise.
@@ -49,6 +52,8 @@ const Register = () => {
           try {
             setAvatar(true);
             setLoading(false);
+
+            downloadURL = filestatus ? downloadURL : userImage;
 
             await updateProfile(res.user, {
               displayName,
