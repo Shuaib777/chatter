@@ -9,6 +9,7 @@ import { AuthContext } from "../context/authContext";
 import { onValue } from "firebase/database";
 import { database, refdb } from "../firebase";
 import { PopupContext } from "../context/popupContext";
+import { useNavigate } from "react-router-dom";
 
 const Chat = () => {
   //this data will comtain two things: chatid(combined id) and user(which i gave through payload)
@@ -16,6 +17,7 @@ const Chat = () => {
   const { currentUser } = useContext(AuthContext);
   const [chatted, setchatted] = useState(false);
   const { dispatch } = useContext(PopupContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getChats = () => {
@@ -36,6 +38,10 @@ const Chat = () => {
   const handleClick = () =>
     dispatch({ type: "CHANGE_STATE", payload: true, id: "anotherUser" });
 
+  const handleJoin = () => {
+    navigate(`/videoroom/${data.chatID}`);
+  };
+
   return (
     <div className="chat">
       {chatted ? (
@@ -55,7 +61,7 @@ const Chat = () => {
               </div>
             )}
             <div className="chatIcons">
-              <img src={Cam} alt="" />
+              <img src={Cam} onClick={handleJoin} alt="" />
               <img src={Add} alt="" />
               <img src={More} alt="" />
             </div>
