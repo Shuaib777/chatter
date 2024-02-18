@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import Cam from "../image/cam.png";
-import Add from "../image/add.png";
-import More from "../image/more.png";
 import Messages from "./Messages";
 import Input from "./Input";
 import { ChatContext } from "../context/chatContext";
@@ -62,8 +60,6 @@ const Chat = () => {
             )}
             <div className="chatIcons">
               <img src={Cam} onClick={handleJoin} alt="" />
-              <img src={Add} alt="" />
-              <img src={More} alt="" />
             </div>
           </div>
           <Messages></Messages>

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import attach from "../image/attach.png";
 import image from "../image/img.png";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { AuthContext } from "../context/authContext";
@@ -106,7 +105,6 @@ const Input = () => {
         value={text}
       />
       <div className="send">
-        <img src={attach} alt="" />
         <input
           type="file"
           id="file"

@@ -19,51 +19,37 @@
 }
 
 .formContainer {
-  background: linear-gradient(45deg, blue, aqua);
+  background-image: url(image/background.jpg);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  @include mobile {
-    background-image: url(image/background.jpg);
-  }
 
   .formWrapper {
     padding: 20px 60px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    background-color: white;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    @include mobile {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: transparent;
-      width: 100%;
-      height: 100vh;
-      padding: 10px 10px;
-    }
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px;
 
     .logo {
-      font-size: 28px;
+      font-size: 80px;
       font-weight: bold;
       color: #5d5b8d;
-      @include mobile {
-        color: #5d5b8d;
-        margin-top: -100px;
-        font-size: 80px;
-      }
+      margin-top: -50px;
     }
 
     .title {
-      font-size: 20px;
+      font-size: 50px;
       color: #5d5b8d;
-      @include mobile {
-        color: #605e9e;
-        font-size: 50px;
-      }
     }
 
     form {
@@ -74,28 +60,23 @@
       gap: 15px;
 
       input {
-        font-size: 15px;
+        width: 400px;
         padding: 15px;
-        width: 250px;
         border: none;
         border-bottom: 1px solid #5d5b8d;
         outline: none;
+        font-size: 30px;
+        background: transparent;
+        color: black;
+        text-align: center;
 
         &::placeholder {
           color: rgb(170, 170, 170);
+          background: transparent;
+
           @include mobile {
             font-size: 30px;
-            background: transparent;
-            color: rgb(9, 9, 9);
           }
-        }
-
-        @include mobile {
-          width: 400px;
-          font-size: 30px;
-          background: transparent;
-          color: rgb(10, 10, 10);
-          text-align: center;
         }
       }
 
@@ -165,6 +146,7 @@
 
 .home {
   display: flex;
+  width: 100%;
   height: 100vh;
   background-color: rgb(201, 201, 221);
   align-items: center;
@@ -237,8 +219,8 @@
 
   .container {
     display: flex;
-    width: 70%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
     @include mobile {
       width: 100%;
@@ -252,6 +234,10 @@
       overflow-y: scroll;
       -webkit-transform: translateZ(0);
       position: relative;
+
+      &.active {
+        width: 100%;
+      }
 
       .navbar {
         display: flex;
@@ -450,7 +436,7 @@
     }
 
     .chat {
-      flex: 2;
+      flex: 3;
 
       .firstUser {
         height: 100%;

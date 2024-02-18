@@ -8,14 +8,14 @@ const Room = () => {
   const { currentUser } = useContext(AuthContext);
 
   const myMeeting = async (element) => {
-    const appID = 1975456548;
-    const serverSecret = "e4ad6fa4ac175e57508351212d347a53";
+    const appID = 1587589474;
+    const serverSecret = "20a698a2efbbb0932f4edefbc2fdfdd1";
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appID,
       serverSecret,
       data.chatID,
       currentUser.uid,
-      "Shaikh"
+      "room"
     );
 
     const zc = ZegoUIKitPrebuilt.create(kitToken);
@@ -24,7 +24,7 @@ const Room = () => {
       sharedLinks: [
         {
           name: "Copy Link",
-          url: `http://localhost:3000/room/${data.chatID}`,
+          url: `${window.location.href}/${data.chatID}`,
         },
       ],
       container: element,
