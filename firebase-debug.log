@@ -1,0 +1,98 @@
+[debug] [2024-02-18T04:30:47.739Z] ----------------------------------------------------------------------
+[debug] [2024-02-18T04:30:47.743Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-02-18T04:30:47.744Z] CLI Version:   12.5.4
+[debug] [2024-02-18T04:30:47.744Z] Platform:      win32
+[debug] [2024-02-18T04:30:47.745Z] Node Version:  v18.16.1
+[debug] [2024-02-18T04:30:47.746Z] Time:          Sun Feb 18 2024 10:00:47 GMT+0530 (India Standard Time)
+[debug] [2024-02-18T04:30:47.747Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-02-18T04:30:47.758Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2024-02-18T04:30:47.945Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-02-18T04:30:47.945Z] > authorizing via signed-in user (shuaibahmedshaikh7@gmail.com)
+[debug] [2024-02-18T04:30:47.946Z] [iam] checking project chatter-80e4e for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-02-18T04:30:47.947Z] > refreshing access token with scopes: []
+[debug] [2024-02-18T04:30:47.948Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-02-18T04:30:47.948Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-02-18T04:30:48.183Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-02-18T04:30:48.183Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-02-18T04:30:48.197Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions [none]
+[debug] [2024-02-18T04:30:48.197Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions x-goog-quota-user=projects/chatter-80e4e
+[debug] [2024-02-18T04:30:48.197Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-02-18T04:30:49.012Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2024-02-18T04:30:49.012Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2024-02-18T04:30:50.373Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions 200
+[debug] [2024-02-18T04:30:50.373Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions {}
+[debug] [2024-02-18T04:30:50.374Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project chatter-80e4e:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2024-02-18T04:30:50.376Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e [none]
+[debug] [2024-02-18T04:30:51.361Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e 403
+[debug] [2024-02-18T04:30:51.362Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-02-18T04:30:51.365Z] HTTP Error: 403, The caller does not have permission
+[debug] [2024-02-18T04:30:51.578Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:49:12)
+    at RetryOperation._fn (C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:285:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project chatter-80e4e. Please make sure the project exists and your account has permission to access it.
+[debug] [2024-02-18T04:32:35.832Z] ----------------------------------------------------------------------
+[debug] [2024-02-18T04:32:35.838Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-02-18T04:32:35.839Z] CLI Version:   12.5.4
+[debug] [2024-02-18T04:32:35.840Z] Platform:      win32
+[debug] [2024-02-18T04:32:35.841Z] Node Version:  v18.16.1
+[debug] [2024-02-18T04:32:35.843Z] Time:          Sun Feb 18 2024 10:02:35 GMT+0530 (India Standard Time)
+[debug] [2024-02-18T04:32:35.844Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-02-18T04:32:36.045Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-02-18T04:32:36.047Z] > authorizing via signed-in user (shuaibahmedshaikh7@gmail.com)
+[debug] [2024-02-18T04:32:36.047Z] [iam] checking project chatter-80e4e for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-02-18T04:32:36.054Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions [none]
+[debug] [2024-02-18T04:32:36.054Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions x-goog-quota-user=projects/chatter-80e4e
+[debug] [2024-02-18T04:32:36.055Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-02-18T04:32:37.901Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions 200
+[debug] [2024-02-18T04:32:37.902Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions {}
+[debug] [2024-02-18T04:32:37.903Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project chatter-80e4e:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2024-02-18T04:32:37.906Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e [none]
+[debug] [2024-02-18T04:32:38.327Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e 403
+[debug] [2024-02-18T04:32:38.328Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-02-18T04:32:38.330Z] HTTP Error: 403, The caller does not have permission
+[debug] [2024-02-18T04:32:38.517Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:49:12)
+    at RetryOperation._fn (C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:285:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project chatter-80e4e. Please make sure the project exists and your account has permission to access it.
+[debug] [2024-02-18T04:34:05.314Z] ----------------------------------------------------------------------
+[debug] [2024-02-18T04:34:05.318Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2024-02-18T04:34:05.318Z] CLI Version:   12.5.4
+[debug] [2024-02-18T04:34:05.319Z] Platform:      win32
+[debug] [2024-02-18T04:34:05.319Z] Node Version:  v18.16.1
+[debug] [2024-02-18T04:34:05.321Z] Time:          Sun Feb 18 2024 10:04:05 GMT+0530 (India Standard Time)
+[debug] [2024-02-18T04:34:05.321Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-02-18T04:34:05.484Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-02-18T04:34:05.485Z] > authorizing via signed-in user (shuaibahmedshaikh7@gmail.com)
+[debug] [2024-02-18T04:34:05.485Z] [iam] checking project chatter-80e4e for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-02-18T04:34:05.488Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions [none]
+[debug] [2024-02-18T04:34:05.497Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions x-goog-quota-user=projects/chatter-80e4e
+[debug] [2024-02-18T04:34:05.497Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-02-18T04:34:07.503Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions 200
+[debug] [2024-02-18T04:34:07.504Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/chatter-80e4e:testIamPermissions {}
+[debug] [2024-02-18T04:34:07.504Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project chatter-80e4e:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2024-02-18T04:34:07.506Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e [none]
+[debug] [2024-02-18T04:34:08.884Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e 403
+[debug] [2024-02-18T04:34:08.885Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatter-80e4e {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2024-02-18T04:34:08.886Z] HTTP Error: 403, The caller does not have permission
+[debug] [2024-02-18T04:34:09.805Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:49:12)
+    at RetryOperation._fn (C:\Users\shuai\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:285:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project chatter-80e4e. Please make sure the project exists and your account has permission to access it.
