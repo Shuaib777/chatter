@@ -8,8 +8,9 @@ const Room = () => {
   const { currentUser } = useContext(AuthContext);
 
   const myMeeting = async (element) => {
-    const appID = 1587589474;
-    const serverSecret = "20a698a2efbbb0932f4edefbc2fdfdd1";
+    const appID = +process.env.REACT_APP_ZEGOCLOUD_API_KEY;
+    const serverSecret = process.env.REACT_APP_ZEGOCLOUD_SERVER_KEY;
+
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appID,
       serverSecret,
@@ -34,6 +35,7 @@ const Room = () => {
       showScreenSharingButton: false,
     });
   };
+
   return (
     <div>
       <div ref={myMeeting} />
